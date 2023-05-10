@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import WelcomeScreen from './src/screens/WelcomeScreen';
-import LoginScreen from './src/screens/LoginScreen';
+import LoginScreen from './src/screens/Login/LoginScreen';
 import GLOBALS from './src/Global';
 import { StyleSheet } from 'react-native';
+import MaterialScreen from './src/screens/MaterialScreen';
+
 
 export default function App() {
   const [screenState, setScreenState] = useState(GLOBALS.SCREEN.WELCOME);

@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useDebugValue } from "react";
+import Login from "./Login";
 import {
   StyleSheet,
   SafeAreaView,
@@ -7,22 +8,40 @@ import {
   TextInput,
   TouchableOpacity,
 } from "react-native";
+import GLOBALS from "../../Global";
 
-const LoginScreen = () => {
+
+const LoginScreen = (props) => {
+
+
+  const {
+    userName,
+    password,
+    handlePasswordChange,
+    handleUserNameCHange,
+    onAuthenticaticate
+  } = Login()
+
+
+
   return (
     <SafeAreaView style={styles.container}>
       <View>
         <Text style={styles.title}>User Name</Text>
-        <TextInput style={styles.input}></TextInput>
+        <TextInput style={styles.input} onChangeText={userName => handleUserNameCHange} defaultValue={userName}></TextInput>
         <Text style={styles.title}>Password</Text>
-        <TextInput style={styles.input} secureTextEntry={true}></TextInput>
-        <TouchableOpacity style={styles.button}>
+        <TextInput style={styles.input} secureTextEntry={true} onChangeText={handlePasswordChange} defaultValue={password}></TextInput>
+        <TouchableOpacity onPress={()=>{onAuthenticaticate(userName, password, props.onNavigate)}} style={styles.button}>
           <Text>Login</Text>
         </TouchableOpacity>
+        <Text>{userName}</Text>
       </View>
     </SafeAreaView>
   );
+
 };
+
+
 
 
 const styles = StyleSheet.create({
